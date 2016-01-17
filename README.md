@@ -23,7 +23,6 @@ TODO List
   - In the spirit of the above point, training should happen on a single sample basis as well
 
 ### New functionality/expansion ideas
-- Make a bot even halfway as hilarious as the [King James Programming](http://kingjamesprogramming.tumblr.com/) bot
 - Use to generate smart fuzz testing vectors
 - Better English language dynamic text generation
   - Smarter handling of grammatical elements like capitalization and punctuation
