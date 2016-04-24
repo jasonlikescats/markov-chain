@@ -6,24 +6,22 @@
 
 #include "markov_chain.h"
 
-std::pair<bool, std::string> sample_generator()
-{
-    static std::ifstream ifs("training_data.txt");
-
-    std::string word;
-    while (ifs >> word) // will split words on whitespace
-    {
-        return std::make_pair(true, word);
-    }
-
-    return std::make_pair(false, std::string());
-}
+using namespace markov_chain_model;
 
 int main()
 {
-    markov_chain<std::string> model;
+    markov_chain<std::string> m;
 
-    model.train(sample_generator);
+    {
+        std::ifstream ifs("training_data.txt");
+
+        size_t last_state = -1;
+        std::string word;
+        while (ifs >> word)
+        {
+            last_state = m.record_sample(word, last_state);
+        }
+    }
 
     // Generate some sentences
     const std::string delimiter(" ");
@@ -33,7 +31,7 @@ int main()
     {
         try
         {
-            model.generate_data(std::cout, delimiter, word, [](const std::string &curr_word) -> bool
+            m.generate_data(std::cout, delimiter, word, [](const std::string &curr_word) -> bool
             {
                 // check for a period to end our sentence
                 return curr_word.back() == '.';
