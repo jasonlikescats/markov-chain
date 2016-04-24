@@ -69,7 +69,7 @@ namespace markov_chain_model
             return std::make_pair(true, next_options.at(rand_idx));
         }
 
-        operator==(const T& state_data)
+        bool operator==(const T& state_data)
         {
             return data_ == state_data;
         }

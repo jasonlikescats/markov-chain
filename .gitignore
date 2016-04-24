@@ -1,5 +1,4 @@
-training_data*
-vector_map.h
+training_*.txt
 
 # Project is so simple right now - I don't see any gain from managing this in source control
 *.vcxproj*
